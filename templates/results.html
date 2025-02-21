@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottery Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lottery Results</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Back to Home</a> | 
+            <a href="{{ url_for('about') }}">About</a>
+        </nav>
+        <div class="content">
+            {% if error %}
+                <p class="error">{{ result }}</p>
+            {% else %}
+                {% for row in result %}
+                    <span class="lottery-row">Row {{ loop.index }}: {{ row | join(', ') }}</span>
+                {% endfor %}
+            {% endif %}
+            <div class="replay">
+                <a href="{{ url_for('index') }}"><button class="replay-btn">Wanna replay?</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

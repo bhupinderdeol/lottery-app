@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deol's Lottery Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Deol's Lottery Generator</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a> | 
+            <a href="{{ url_for('about') }}">About</a>
+        </nav>
+
+        {% if show_about %}
+            <div class="content">
+                <h2>About</h2>
+                <p>Deol's Lottery Generator<br>Created by Bhupinder Deol<br>Powered by Flask & Python</p>
+            </div>
+        {% else %}
+            <div class="content">
+                <form method="POST" action="/">
+                    <label for="rows">Number of Rows:</label>
+                    <input type="number" id="rows" name="rows" min="1" required>
+                    <label for="balls">Number of Balls per Row:</label>
+                    <input type="number" id="balls" name="balls" min="1" max="50" required>
+                    <button type="submit">Generate Numbers</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
